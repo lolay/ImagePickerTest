@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, strong) UIImagePickerController* picker;
 
 @end
 
@@ -22,6 +24,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction) cameraPressed:(id) sender {
+    self.picker = [[UIImagePickerController alloc] init];
+    self.picker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+    self.picker.delegate = self;
+    self.picker.allowsEditing = NO;
+    [self presentViewController:self.picker animated:YES completion:nil];
 }
 
 @end
