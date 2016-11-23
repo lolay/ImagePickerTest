@@ -18,7 +18,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    self.picker = [[UIImagePickerController alloc] init];
+    self.picker.sourceType =  UIImagePickerControllerSourceTypeCamera;
+    self.picker.allowsEditing = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,10 +29,6 @@
 }
 
 - (IBAction) cameraPressed:(id) sender {
-    self.picker = [[UIImagePickerController alloc] init];
-    self.picker.sourceType =  UIImagePickerControllerSourceTypeCamera;
-    self.picker.delegate = self;
-    self.picker.allowsEditing = NO;
     [self presentViewController:self.picker animated:YES completion:nil];
 }
 
